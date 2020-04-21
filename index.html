@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict heart health </h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="age" placeholder="Age" required="required" />
+		<input type="text" name="sex" placeholder="Sex_Male" required="required" />
+        <input type="text" name="resting_blood_pressure" placeholder="Resting_Blood_pressure" required="required" />
+		<input type="text" name="cholesterol" placeholder="Cholesterol" required="required" />
+		<input type="text" name="fasting_blood_sugar" placeholder="Fasting_blood_sugar greater than 120mg/ml" required="required" />
+		<input type="text" name="max_heart_rate_achieved" placeholder="Max_Heartrate" required="required" />
+		<input type="text" name="exercise_induced_angina" placeholder="Exercise_induced_angina(yes)" required="required" />
+		<input type="text" name="st_depression" placeholder="St_depression" required="required" />
+		<input type="text" name="num_major_vessels" placeholder="Num_major_vessels" required="required" />
+		<input type="text" name="chest_pain_type_asymptomatic" placeholder="Chest_Pain_type(Asymptomatic)" required="required" />
+		<input type="text" name="chest_pain_type_atypical angina" placeholder="Chest_Pain_type(atypical angina)" required="required" />
+		<input type="text" name="chest_pain_type_non-anginal pain" placeholder="Chest_Pain_type(non-anginal angina)" required="required" />
+		<input type="text" name="chest_pain_type_typical angina" placeholder="Chest_Pain_type(typical angina)" required="required" />
+		<input type="text" name="rest_ecg_ST-T wave abnormality" placeholder="ECG(ST-T wave abnormality)" required="required" />
+		<input type="text" name="rest_ecg_left ventricular hypertrophy" placeholder="ECG(left ventricular hypertrophy)" required="required" />
+		<input type="text" name="rest_ecg_normal" placeholder="ECG(Normal)" required="required" />
+		<input type="text" name="st_slope_downsloping" placeholder="st_slope(downsloping)" required="required" />
+		<input type="text" name="st_slope_flat" placeholder="st_slope(Flat)" required="required" />
+		<input type="text" name="st_slope_upsloping" placeholder="st_slope(Upsloping)" required="required" />
+		<input type="text" name="thalassemia_fixed defect" placeholder="thalassemia(Fixed defect)" required="required" />
+		<input type="text" name="thalassemia_normal" placeholder="thalassemia(Normal)" required="required" />
+		<input type="text" name="thalassemia_reversable defect" placeholder="thalassemia(Reversable defect)" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>

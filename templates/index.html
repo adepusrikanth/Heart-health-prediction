@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+	<meta charset="UTF-8">
+	<title>ML API</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="../static/css/style.css" />
+
+</head>
+
+
+<body>
+	<div class="login">
+		<h3 style="color:white;">Predict heart health </h1>
+
+			<!-- Main Input For Receiving Query to our ML -->
+			<form action="{{ url_for('predict')}}" method="post">
+				<div title="Age of an individual">
+					<label for="age">Age*</label>
+					<input type="number" name="age" placeholder="Age" required="required" />
+				</div>
+				<div title="Sex_Male:[1 = male ,0 = female]">
+					<label for="sex">Sex*</label>
+					<select id="sex" name="sex">
+						<option value="" disabled selected>Sex</option>
+						<option value=1>Male</option>
+						<option value=0>Female</option>
+					</select>
+				</div>
+				<div title="Resting Blood Pressure an individual">
+					<label for="Resting_Blood_pressure">Resting Blood Pressure*</label>
+					<input type="number" name="resting_blood_pressure" placeholder="Resting_Blood_pressure"
+						required="required" />
+				</div>
+				<div title="Serum cholesterol in mg/dl (unit)">
+					<label for="Cholesterol">Serum cholesterol*</label>
+					<input type="number" name="cholesterol" placeholder="Cholesterol" required="required" />
+				</div>
+				<div
+					title="compares fasting blood sugar value of an individual with 120mg/dl.If fasting blood sugar > 120mg/dl then : 1 else : 0">
+					<label for="fasting_blood_sugar">Blood Sugar*</label>
+					<select id="sex" name="fasting_blood_sugar">
+						<option value="" disabled selected>Fasting_blood_sugar > 120mg/ml</option>
+						<option value=1>>120mg/ml</option>
+						<option value=0>
+							<=120mg /ml</option>
+					</select>
+				</div>
+				<div title="max heart rate achieved by an individual.">
+					<label for="Max_Heartrate">Max Heart rate*</label>
+					<input type="number" name="max_heart_rate_achieved" placeholder="Max_Heartrate"
+						required="required" />
+				</div>
+				<div
+					title="Anigna means If you have severe pain in the chest ,arms ,neck owing to inadequate supply of blood to heart ,1=Yes,0=no">
+					<label for="Exercise_induced_angina">Anigna*</label>
+					<select id="sex" name="exercise_induced_angina">
+						<option value="" disabled selected>Exercise_induced_angina(yes)</option>
+						<option value=1>Yes</option>
+						<option value=0>No</option>
+					</select>
+				</div>
+				<div title="ST depression[0-4]">
+					<label for="St_depression">ST depression*</label>
+					<input type="text" name="st_depression" placeholder="St_depression" required="required" />
+				</div>
+				<div title="Number of major vessels (0–3) colored by flourosopy">
+					<label for="Num_major_vessels">Number of major vessels*</label>
+					<input type="text" name="num_major_vessels" placeholder="Num_major_vessels" required="required" />
+				</div>
+				<div title="Chest Pain Type">
+					<label for="chest_pain_type">Chest Pain Type*</label>
+					<select id="chest_pain_type" name="chest_pain_type">
+						<option value="" disabled selected>Chest Pain</option>
+						<option value="1,0,0,0">Asymptomatic</option>
+						<option value="0,1,0,0">atypical angina</option>
+						<option value="0,0,1,0">non-anginal angina</option>
+						<option value="0,0,0,1">typical angina)</option>
+					</select>
+				</div>
+				<div title="Displays resting electrocardiographic results">
+					<label for="Rest_ECG">ECG*</label>
+					<select id="Rest_ECG" name="Rest_ECG">
+						<option value="" disabled selected>Rest ECG</option>
+						<option value="1,0,0">ST-T wave abnormality</option>
+						<option value="0,1,0">left ventricular hypertrophy</option>
+						<option value="0,0,1">normal</option>
+					</select>
+				</div>
+				<div title="ST segment depression is the classical response to stress during excercise stress testing">
+					<label for="st_slope">ST Slope</label>
+					<select id="st_slope" name="st_slope">
+						<option value="" disabled selected>ST Slope</option>
+						<option value="1,0,0">downsloping</option>
+						<option value="0,1,0">flat</option>
+						<option value="0,0,1">upsloping</option>
+					</select>
+				</div>
+				<div
+					title="Thalassemia is an inherited blood disorder that causes your body to have less hemoglobin than normal">
+					<label for="thalassemia">Thalassemia*</label>
+					<select id="thalassemia" name="thalassemia">
+						<option value="" disabled selected>Thalassemia</option>
+						<option value="1,0,0">fixed defect</option>
+						<option value="0,1,0">normal</option>
+						<option value="0,0,1">reversable defect</option>
+					</select>
+				</div>
+
+				<div class="submit-btn-container">
+					<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+				</div>
+			</form>
+
+			<br>
+			<br>
+			{{ prediction_text }}
+
+			<p class="created-by">Srikanth Adepu</p>
+	</div>
+
+
+
+</body>
+
+</html>
